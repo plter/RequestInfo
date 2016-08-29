@@ -1,0 +1,25 @@
+body {
+    overflow: hidden;
+    position: relative;
+    margin: 0;
+}
+
+.hbox {
+    display: flex;
+    flex-direction: row;
+}
+
+.box-content {
+    display: flex;
+    margin: 2px;
+}
+
+.vbox {
+    display: flex;
+    flex-direction: column;
+}
+
+#ta-output {
+    flex: 1;
+    resize: none;
+}

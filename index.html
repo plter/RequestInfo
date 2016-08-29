@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>请求信息</title>
+
+    <script>
+        window.$ = window.jQuery = require("./node_modules/jqueryui/external/jquery/jquery.js");
+    </script>
+
+    <link rel="stylesheet" href="node_modules/jqueryui/jquery-ui.min.css">
+    <link rel="stylesheet" href="node_modules/jqueryui/jquery-ui.theme.min.css">
+    <script src="node_modules/jqueryui/jquery-ui.min.js"></script>
+
+    <link rel="stylesheet" href="static/style.css">
+
+    <script src="static/Log.js"></script>
+    <script src="static/Server.js"></script>
+</head>
+<body class="vbox">
+<div class="hbox">
+    <span style="font-size: 18pt" class="box-content">端口:</span>
+    <input id="port-input" type="number" style="width: 120px;font-size: 18pt" class="box-content" title="port-input">
+    <button id="btn-start-server" class="box-content btn">启动服务器</button>
+</div>
+<textarea id="ta-output"></textarea>
+
+<script src="static/index.js"></script>
+</body>
+</html>
