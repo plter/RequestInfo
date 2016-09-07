@@ -2,21 +2,26 @@
  * Created by plter on 8/29/16.
  */
 
-(function () {
+const electron = require("electron");
+const ipcRenderer = electron.ipcRenderer;
 
-    class Log {
+class Log {
 
-        static setOutputText(text) {
-            Log._outputText = text;
-        }
+    static setOutputText(text) {
+        Log._outputText = text;
+    }
 
-        static info(msg) {
-            if (Log._outputText) {
-                Log._outputText.innerHTML += msg + "<br>";
-                Log._outputText.scrollTop = Log.outputText.scrollHeight;
-            }
+    static info(msg) {
+        if (Log._outputText) {
+            Log._outputText.innerHTML += msg + "\n";
+            Log._outputText.scrollTop = Log.outputText.scrollHeight;
         }
     }
 
-    window.Log = Log;
-})();
+    static print() {
+        arguments.join = Array.prototype.join;
+        ipcRenderer.sendSync("print", arguments.join(","));
+    }
+}
+
+module.exports = Log;

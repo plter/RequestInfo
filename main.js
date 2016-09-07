@@ -5,6 +5,12 @@
 const electron = require("electron");
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
+const ipcMain = electron.ipcMain;
+
+ipcMain.on("print", (event, arg)=> {
+    console.log(arg);
+    event.returnValue = "No result";
+});
 
 class Main {
 
@@ -14,7 +20,7 @@ class Main {
 
     createWindow() {
         this.mainWindow = new BrowserWindow({width: 550, height: 400});
-        this.mainWindow.loadURL(`file://${__dirname}/index.html`);
+        this.mainWindow.loadURL(`file://${__dirname}/static/views/MainView.html`);
         this.mainWindow.on("closed", ()=> {
             this.mainWindow = null;
         });
@@ -26,9 +32,7 @@ class Main {
         });
 
         app.on('window-all-closed', ()=> {
-            if (process.platform !== 'darwin') {
-                app.quit();
-            }
+            app.quit();
         });
 
         app.on('activate', ()=> {
